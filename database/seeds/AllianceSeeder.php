@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Alliance;
+use App\Models\Guild;
 use Illuminate\Database\Seeder;
 
 class AllianceSeeder extends Seeder
@@ -14,7 +14,7 @@ class AllianceSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
             $faker = \Faker\Factory::create();
-            Alliance::create([
+            Guild::create([
                 'name' => $faker->unique()->word
             ]);
         }

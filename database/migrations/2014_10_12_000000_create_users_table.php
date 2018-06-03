@@ -21,10 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
 
-            $table->uuid('alliance_uuid');
-            $table->foreign('alliance_uuid')->references('id')->on('alliances');
+            $table->uuid('guild_uuid')->nullable();
+            $table->foreign('guild_uuid')->references('id')->on('guilds');
 
-            $table->uuid('totem_uuid');
+            $table->uuid('totem_uuid')->nullable();
             $table->foreign('totem_uuid')->references('id')->on('totems');
 
             $table->rememberToken();

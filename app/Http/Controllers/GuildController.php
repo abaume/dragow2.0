@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\BreedingResource;
-use App\Models\Breeding;
+use App\Http\Resources\GuildResource;
+use App\Models\Guild;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class BreedingController extends Controller
+class GuildController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|\Illuminate\Http\Response
      */
     public function index()
     {
-        return BreedingResource::collection(Breeding::all());
+        return GuildResource::collection(Guild::all());
     }
 
     /**
@@ -28,8 +29,7 @@ class BreedingController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'name'          => 'required | string',
-            'user_uuid'     => 'required'
+            'name'       => 'required | string'
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -37,38 +37,36 @@ class BreedingController extends Controller
         if ($validator->fails()) {
             abort(400, 'wrong_parameter');
         } else {
-            $breeding = new Breeding;
-            $breeding->name        = $request->input('name');
-            $breeding->user_uuid   = $request->input('user_uuid');
+            $guild = new Guild;
+            $guild->name        = $request->input('name');
 
-            $breeding->save();
-            return \response()->json($breeding, 201);
+            $guild->save();
+            return \response()->json($guild, 201);
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Breeding $breeding
-     * @return \App\Breeding|Breeding
+     * @param Guild $guild
+     * @return \App\Alliance|Guild
      */
-    public function show(Breeding $breeding)
+    public function show(Guild $guild)
     {
-        return $breeding;
+        return $guild;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param Breeding $breeding
+     * @param Guild $guild
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Breeding $breeding)
+    public function update(Request $request, Guild $guild)
     {
         $rules = array(
-            'name'          => 'required | string',
-            'user_uuid'     => 'required'
+            'name'       => 'required | string'
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -76,24 +74,24 @@ class BreedingController extends Controller
         if ($validator->fails()) {
             abort(400, 'wrong_parameter');
         } else {
-            $breeding->name        = $request->input('name');
-            $breeding->user_uuid   = $request->input('user_uuid');
+            $guild->name        = $request->input('name');
 
-            $breeding->save();
-            return \response()->json($breeding, 200);
+            $guild->save();
+            return \response()->json($guild, 200);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Breeding $breeding
+     * @param Guild $guild
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function destroy(Breeding $breeding)
+    public function destroy(Guild $guild)
     {
-        $breeding->delete();
+        User::query()->where('guild_uuid', 'like', $guild->id)->update(['guild_uuid' => null]);
+        $guild->delete();
         return \response()->json(null, 204);
     }
 }

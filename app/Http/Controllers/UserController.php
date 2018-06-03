@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Alliance;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class AllianceController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return User[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
-        //
+        return User::all();
     }
 
     /**
@@ -31,10 +31,10 @@ class AllianceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Alliance  $alliance
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Alliance $alliance)
+    public function show(User $user)
     {
         //
     }
@@ -43,10 +43,10 @@ class AllianceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Alliance  $alliance
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alliance $alliance)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -54,10 +54,10 @@ class AllianceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Alliance  $alliance
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alliance $alliance)
+    public function destroy(User $user)
     {
         //
     }

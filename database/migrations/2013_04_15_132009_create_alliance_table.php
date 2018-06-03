@@ -13,7 +13,7 @@ class CreateAllianceTable extends Migration
      */
     public function up()
     {
-        Schema::create('alliances', function (Blueprint $table) {
+        Schema::create('guilds', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
 
@@ -33,6 +33,6 @@ class CreateAllianceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alliances');
+        Schema::dropIfExists('guilds');
     }
 }
