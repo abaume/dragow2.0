@@ -23,8 +23,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
     }
 
@@ -36,24 +34,6 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
-        //
-    }
-
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapWebRoutes()
-    {
-        Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
     }
 
     /**
@@ -65,9 +45,49 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
+        Route::prefix('users')
              ->middleware('api')
              ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+             ->group(base_path('routes/users.php'));
+
+        Route::prefix('guilds')
+             ->middleware('api')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/guilds.php'));
+
+        Route::prefix('breeding')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/breeding.php'));
+
+        Route::prefix('colors')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/colors.php'));
+
+        Route::prefix('contests')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/contests.php'));
+
+        Route::prefix('dragons')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/dragons.php'));
+
+        Route::prefix('races')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/races.php'));
+
+        Route::prefix('totems')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/totems.php'));
+
+        Route::prefix('participation')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/participation.php'));
     }
 }

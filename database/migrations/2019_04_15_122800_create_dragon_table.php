@@ -24,11 +24,8 @@ class CreateDragonTable extends Migration
             $table->uuid('breeding_uuid');
             $table->foreign('breeding_uuid')->references('id')->on('breedings');
 
-            $table->uuid('color_uuid');
-            $table->foreign('color_uuid')->references('id')->on('colors');
-
-            $table->uuid('race_uuid');
-            $table->foreign('race_uuid')->references('id')->on('races');
+            $table->uuid('appearance_uuid');
+            $table->foreign('appearance_uuid')->references('id')->on('appearances');
 
             $table->timestamps();
         });

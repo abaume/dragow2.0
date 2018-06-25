@@ -14,18 +14,16 @@ class DragonSeeder extends Seeder
     public function run()
     {
         $breeding = DB::table('breedings')->pluck('id')->all();
-        $color = DB::table('colors')->pluck('id')->all();
-        $race = DB::table('races')->pluck('id')->all();
+        $appearance = DB::table('appearances')->pluck('id')->all();
 
         for ($i = 0; $i < 10; $i++) {
             $faker = \Faker\Factory::create();
             Dragon::create([
-                'name'          => $faker->word,
-                'gender'        => $faker->randomElement(['male', 'female']),
-                'statistics'    => $faker->randomDigit,
-                'breeding_uuid' => $faker->randomElement($breeding),
-                'color_uuid'    => $faker->randomElement($color),
-                'race_uuid'     => $faker->randomElement($race)
+                'name'              => $faker->word,
+                'gender'            => $faker->randomElement(['male', 'female']),
+                'statistics'        => $faker->randomDigit,
+                'breeding_uuid'     => $faker->randomElement($breeding),
+                'appearance_uuid'   => $faker->randomElement($appearance)
             ]);
         }
     }
