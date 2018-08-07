@@ -2,63 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AppearanceResource;
 use App\Models\Appearance;
+use App\Models\Race;
 use Illuminate\Http\Request;
 
 class AppearanceController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource for one race of dragons.
      *
-     * @return \Illuminate\Http\Response
+     * @param Race $race
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|\Illuminate\Http\Response
      */
-    public function index()
+    public function index(Race $race)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Appearance  $appearance
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Appearance $appearance)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Appearance  $appearance
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Appearance $appearance)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Appearance  $appearance
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Appearance $appearance)
-    {
-        //
+        return AppearanceResource::collection(Appearance::query()->where('race', $race->id)->paginate(1));
     }
 }

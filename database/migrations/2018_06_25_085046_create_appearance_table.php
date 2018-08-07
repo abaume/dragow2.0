@@ -21,8 +21,8 @@ class CreateAppearanceTable extends Migration
             $table->uuid('race');
             $table->string('link_asset');
 
-            $table->foreign('color')->reference('id')->on('colors');
-            $table->uuid('race')->reference('id')->on('races');
+            $table->foreign('color')->references('id')->on('colors');
+            $table->foreign('race')->references('id')->on('races');
 
             $table->timestamps();
         });

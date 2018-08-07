@@ -2,6 +2,8 @@
 
 return [
 
+    'app_web_ui' => env('APP_WEB_UI', 'http://localhost'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

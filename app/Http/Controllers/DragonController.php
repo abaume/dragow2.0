@@ -30,8 +30,6 @@ class DragonController extends Controller
         $rules = array(
             'name'          => 'required | string',
             'gender'        => 'required',
-            'statistics'    => 'required',
-            'breeding_uuid' => 'required',
             'color_uuid'    => 'required',
             'race_uuid'     => 'required'
         );
