@@ -17,8 +17,7 @@ class AppearanceResource extends Resource
         return [
             'id' => $this->id,
             'color' => new ColorResource($this->color()->first()),
-            'race' => new RaceResource($this->race()->first()),
-            'link_asset'    => $this->link_asset
+            'race' => new RaceResource($this->race()->first())
         ];
     }
 }

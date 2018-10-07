@@ -17,6 +17,6 @@ class AppearanceController extends Controller
      */
     public function index(Race $race)
     {
-        return AppearanceResource::collection(Appearance::query()->where('race', $race->id)->paginate(1));
+        return AppearanceResource::collection(Appearance::query()->where('race', $race->id)->get());
     }
 }

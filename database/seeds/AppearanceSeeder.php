@@ -16,12 +16,11 @@ class AppearanceSeeder extends Seeder
         $races = DB::table('races')->pluck('id')->all();
         $colors = DB::table('colors')->pluck('id')->all();
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $faker = \Faker\Factory::create();
             Appearance::create([
                 'race' => $faker->randomElement($races),
                 'color' => $faker->randomElement($colors),
-                'link_asset' => '../assets/dragons/gloom.jpg'
             ]);
         }
     }

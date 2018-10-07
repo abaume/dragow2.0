@@ -12,11 +12,14 @@ class ColorSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
-            $faker = \Faker\Factory::create();
-            Color::create([
-                'name'          => $faker->unique()->word
-            ]);
-        }
+        Color::create([
+            'name'          => 'gloom'
+        ]);
+        Color::create([
+            'name'          => 'gloomb'
+        ]);
+        Color::create([
+            'name'          => 'gloomg'
+        ]);
     }
 }
