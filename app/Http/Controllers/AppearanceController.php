@@ -52,24 +52,29 @@ class AppearanceController extends Controller
                 $appearance->save();
                 return \response()->json($appearance, 201);
             } else {
-                return \response()->json("already exist", 409);
+                return \response()->json("already exist", 201);
             }
         }
     }
 
     public function uploadColor(Request $request) {
         $this->validate($request, [
-            'img' => 'required|image|mimes:png|max:2048',
+            'image' => 'required|image|max:2048',
+            'race'  => 'required',
+            'name' => 'required'
         ]);
 
-        if ($request->hasFile('img')) {
-            $image = $request->file('input_img');
-            $name = $request->input('color_name').'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/assets/dragons/' . $request->input('race_name') . '/');
-            $image->move($destinationPath, $name);
-            $this->save();
+        if ($request->hasFile('image')) {
 
-            return back()->with('success','Image Upload successfully');
+            $image = $request->file('image');
+            $name = $request->input('name') . '.png';
+
+            $race = Race::query()->where('id', $request->input('race'))->first()->name;
+
+            $destinationPath = public_path('/storage/assets/dragons/' . $race . '/');
+            $image->move($destinationPath, $name);
+
+            return response()->json('Image Upload successfully', 201);
         }
     }
 

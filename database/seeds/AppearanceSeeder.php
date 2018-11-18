@@ -32,7 +32,7 @@ class AppearanceSeeder extends Seeder
             'color' => $color3->first()
         ]);*/
 
-        $races = DB::table('races')->pluck('id')->all();
+        /*$races = DB::table('races')->pluck('id')->all();
         $colors = DB::table('colors')->pluck('id')->all();
 
         for ($i = 0; $i < 10; $i++) {
@@ -41,6 +41,6 @@ class AppearanceSeeder extends Seeder
                 'race' => $faker->randomElement($races),
                 'color' => $faker->randomElement($colors),
             ]);
-        }
+        }*/
     }
 }

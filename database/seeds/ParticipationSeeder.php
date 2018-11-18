@@ -13,7 +13,7 @@ class ParticipationSeeder extends Seeder
      */
     public function run()
     {
-        $dragon     = DB::table('dragons')->pluck('id')->all();
+        /*$dragon     = DB::table('dragons')->pluck('id')->all();
         $contest    = DB::table('contests')->pluck('id')->all();
 
         for ($i = 0; $i < 10; $i++) {
@@ -22,6 +22,6 @@ class ParticipationSeeder extends Seeder
                 'dragon_uuid'   => $faker->randomElement($dragon),
                 'contest_uuid'  => $faker->randomElement($contest)
             ]);
-        }
+        }*/
     }
 }

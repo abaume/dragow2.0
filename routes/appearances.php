@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/{race}', 'AppearanceController@index');
 Route::post('/', 'AppearanceController@store');
+Route::post('/image', 'AppearanceController@uploadColor');
