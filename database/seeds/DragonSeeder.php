@@ -13,7 +13,7 @@ class DragonSeeder extends Seeder
      */
     public function run()
     {
-        /*$breeding = DB::table('breedings')->pluck('id')->all();
+        $breeding = DB::table('breedings')->pluck('id')->all();
         $appearance = DB::table('appearances')->pluck('id')->all();
 
         for ($i = 0; $i < 10; $i++) {
@@ -25,6 +25,6 @@ class DragonSeeder extends Seeder
                 'breeding_uuid'     => $faker->randomElement($breeding),
                 'appearance_uuid'   => $faker->randomElement($appearance)
             ]);
-        }*/
+        }
     }
 }

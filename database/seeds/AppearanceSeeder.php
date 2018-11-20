@@ -14,33 +14,22 @@ class AppearanceSeeder extends Seeder
     public function run()
     {
 
-        /*$races = DB::table('races')->pluck('id')->where("name", "=", "gloom");
-        $color1 = DB::table('colors')->pluck('id')->where("name", "=", "gloom");
-        $color2 = DB::table('colors')->pluck('id')->where("name", "=", "gloomb");
-        $color3 = DB::table('colors')->pluck('id')->where("name", "=", "gloomg");
+        $races = DB::table('races')->where("name", 'gloom')->first()->id;
+        $color1 = DB::table('colors')->where("name", "gloom")->first()->id;
+        $color2 = DB::table('colors')->where("name", "=", "gloomb")->first()->id;
+        $color3 = DB::table('colors')->where("name", "=", "gloomg")->first()->id;
 
         Appearance::create([
-            'race' => $races->first(),
-            'color' => $color1->first()
+            'race' => $races,
+            'color' => $color1
         ]);
         Appearance::create([
-            'race' => $races->first(),
-            'color' => $color2->first()
+            'race' => $races,
+            'color' => $color2
         ]);
         Appearance::create([
-            'race' => $races->first(),
-            'color' => $color3->first()
-        ]);*/
-
-        /*$races = DB::table('races')->pluck('id')->all();
-        $colors = DB::table('colors')->pluck('id')->all();
-
-        for ($i = 0; $i < 10; $i++) {
-            $faker = \Faker\Factory::create();
-            Appearance::create([
-                'race' => $faker->randomElement($races),
-                'color' => $faker->randomElement($colors),
-            ]);
-        }*/
+            'race' => $races,
+            'color' => $color3
+        ]);
     }
 }

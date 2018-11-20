@@ -12,12 +12,22 @@ use Illuminate\Support\Facades\Validator;
 class AppearanceController extends Controller
 {
     /**
+     * Display a listing of the appearances.
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|\Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return AppearanceResource::collection(Appearance::all());
+    }
+
+    /**
      * Display a listing of the resource for one race of dragons.
      *
      * @param Race $race
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|\Illuminate\Http\Response
      */
-    public function index(Race $race)
+    public function indexByRace(Race $race)
     {
         return AppearanceResource::collection(Appearance::query()->where('race', $race->id)->get());
     }

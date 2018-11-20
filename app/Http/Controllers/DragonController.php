@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DragonResource;
 use App\Models\Dragon;
-use App\Models\Participation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,11 +12,11 @@ class DragonController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Dragon[]|\Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return Dragon::all();
+        return DragonResource::collection(Dragon::all());
     }
 
     /**

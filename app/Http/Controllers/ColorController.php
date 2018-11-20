@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ColorResource;
 use App\Models\Color;
 use App\Models\Dragon;
 use Illuminate\Http\Request;
@@ -12,11 +13,11 @@ class ColorController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \App\Models\Color[]|\Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return Color::all();
+        return ColorResource::collection(Color::all());
     }
 
     /**
