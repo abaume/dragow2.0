@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\DragonResource;
+use App\Models\Breeding;
 use App\Models\Dragon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -30,8 +31,7 @@ class DragonController extends Controller
         $rules = array(
             'name'          => 'required | string',
             'gender'        => 'required',
-            'color_uuid'    => 'required',
-            'race_uuid'     => 'required'
+            'appearance_uuid'    => 'required'
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -42,10 +42,9 @@ class DragonController extends Controller
             $dragon = new Dragon;
             $dragon->name           = $request->input('name');
             $dragon->gender         = $request->input('gender');
-            $dragon->statistics     = $request->input('statistics');
-            $dragon->breeding_uuid  = $request->input('breeding_uuid');
-            $dragon->color_uuid     = $request->input('color_uuid');
-            $dragon->race_uuid      = $request->input('race_uuid');
+            $dragon->statistics     = 5;
+            $dragon->breeding_uuid  = Breeding::query()->where('name', 'principal')->first()->id;
+            $dragon->appearance_uuid     = $request->input('appearance_uuid');
 
             $dragon->save();
             return \response()->json($dragon, 201);
