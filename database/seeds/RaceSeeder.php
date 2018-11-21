@@ -14,25 +14,33 @@ class RaceSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
         Race::create([
-                'name'      => 'gloom',
-                'feature'   => $faker->word
-            ])
+            'name'      => 'gloom',
+            'feature'   => $faker->word
+        ])
         ;Race::create([
-                'name'      => 'medusas',
-                'feature'   => $faker->word
-            ]);
+        'name'      => 'medusas',
+        'feature'   => $faker->word
+    ]);
         Race::create([
-                'name'      => 'scalebounds',
-                'feature'   => $faker->word
-            ]);
+            'name'      => 'scalebounds',
+            'feature'   => $faker->word
+        ]);
         Race::create([
-                'name'      => 'sentinel',
-                'feature'   => $faker->word
-            ]);
+            'name'      => 'sentinel',
+            'feature'   => $faker->word
+        ]);
         Race::create([
-                'name'      => 'shear',
-                'feature'   => $faker->word
-            ]);
+            'name'      => 'shear',
+            'feature'   => $faker->word
+        ]);
+        Race::create([
+            'name'      => 'snack',
+            'feature'   => $faker->word
+        ]);
+        Race::create([
+            'name'      => 'trapper',
+            'feature'   => $faker->word
+        ]);
 
 
 
