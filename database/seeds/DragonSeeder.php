@@ -15,13 +15,14 @@ class DragonSeeder extends Seeder
     {
         $breeding = DB::table('breedings')->pluck('id')->all();
         $appearance = DB::table('appearances')->pluck('id')->all();
+        $skills = DB::table('skills')->pluck('id')->all();
 
         for ($i = 0; $i < 10; $i++) {
             $faker = \Faker\Factory::create();
             Dragon::create([
                 'name'              => $faker->word,
                 'gender'            => $faker->randomElement(['male', 'female']),
-                'statistics'        => $faker->randomDigit,
+                'skills_uuid'       => $faker->randomElement($skills),
                 'breeding_uuid'     => $faker->randomElement($breeding),
                 'appearance_uuid'   => $faker->randomElement($appearance)
             ]);

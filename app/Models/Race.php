@@ -9,4 +9,9 @@ class Race extends Model
 {
     use Uuids;
     public $incrementing = false;
+
+    public function attribute()
+    {
+        return $this->belongsTo('App\Models\Attribute', 'attributes_uuid');
+    }
 }

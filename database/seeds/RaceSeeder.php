@@ -2,6 +2,7 @@
 
 use App\Models\Race;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class RaceSeeder extends Seeder
 {
@@ -12,44 +13,36 @@ class RaceSeeder extends Seeder
      */
     public function run()
     {
+        $attributes = DB::table('attributes')->pluck('id')->all();
+
         $faker = \Faker\Factory::create();
         Race::create([
-            'name'      => 'gloom',
-            'feature'   => $faker->word
-        ])
-        ;Race::create([
-        'name'      => 'medusas',
-        'feature'   => $faker->word
-    ]);
-        Race::create([
-            'name'      => 'scalebounds',
-            'feature'   => $faker->word
+            'name' => 'gloom',
+            'attributes_uuid' => $faker->randomElement($attributes)
         ]);
         Race::create([
-            'name'      => 'sentinel',
-            'feature'   => $faker->word
+            'name' => 'medusas',
+            'attributes_uuid' => $faker->randomElement($attributes)
         ]);
         Race::create([
-            'name'      => 'shear',
-            'feature'   => $faker->word
+            'name' => 'scalebounds',
+            'attributes_uuid' => $faker->randomElement($attributes)
         ]);
         Race::create([
-            'name'      => 'snack',
-            'feature'   => $faker->word
+            'name' => 'sentinel',
+            'attributes_uuid' => $faker->randomElement($attributes)
         ]);
         Race::create([
-            'name'      => 'trapper',
-            'feature'   => $faker->word
+            'name' => 'shear',
+            'attributes_uuid' => $faker->randomElement($attributes)
         ]);
-
-
-
-//        for ($i = 0; $i < 5; $i++) {
-//            $faker = \Faker\Factory::create();
-//            Race::create([
-//                'name'      => $faker->unique()->word,
-//                'feature'   => $faker->word
-//            ]);
-//        }
+        Race::create([
+            'name' => 'snack',
+            'attributes_uuid' => $faker->randomElement($attributes)
+        ]);
+        Race::create([
+            'name' => 'trapper',
+            'attributes_uuid' => $faker->randomElement($attributes)
+        ]);
     }
 }

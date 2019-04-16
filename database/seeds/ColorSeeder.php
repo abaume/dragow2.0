@@ -42,5 +42,8 @@ class ColorSeeder extends Seeder
         Color::create([
             'name'          => 'trapper_1'
         ]);
+        Color::create([
+            'name'          => 'trapper_2'
+        ]);
     }
 }

@@ -19,7 +19,9 @@ class CreateDragonTable extends Migration
 
             $table->string('name');
             $table->string('gender');
-            $table->integer('statistics');
+
+            $table->uuid('skills_uuid');
+            $table->foreign('skills_uuid')->references('id')->on('skills');
 
             $table->uuid('breeding_uuid');
             $table->foreign('breeding_uuid')->references('id')->on('breedings');

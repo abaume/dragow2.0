@@ -79,9 +79,14 @@ class AppearanceSeeder extends Seeder
         /* TRAPPER */
         $dragon = DB::table('races')->where("name", 'trapper')->first()->id;
         $color = DB::table('colors')->where("name", "=", "trapper_1")->first()->id;
+        $color2 = DB::table('colors')->where("name", "=", "trapper_2")->first()->id;
         Appearance::create([
             'race' => $dragon,
             'color' => $color
+        ]);
+        Appearance::create([
+            'race' => $dragon,
+            'color' => $color2
         ]);
     }
 }

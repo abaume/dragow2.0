@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attribut;
 use App\Http\Resources\DragonResource;
 use App\Models\Breeding;
 use App\Models\Dragon;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use PHPUnit\Framework\Constraint\Attribute;
 
 class DragonController extends Controller
 {
@@ -42,7 +45,14 @@ class DragonController extends Controller
             $dragon = new Dragon;
             $dragon->name           = $request->input('name');
             $dragon->gender         = $request->input('gender');
-            $dragon->statistics     = 5;
+            $dragon->attributs_uuid     = Attribut::query()
+                ->join('races', "races.attributs_uuid", "=", "attributs.id")
+                ->join("appearances", "appearanes.race", "=", "race.id")
+                ->where("appearance.id", "=", $request->input("appearance_uuid"));
+            /*$dragon->skills_uuid = Skill::query()
+                ->join('races', "races.attributs_uuid", "=", "attributs.id")
+                ->join("appearances", "appearanes.race", "=", "race.id")
+                ->where("appearance.id", "=", $request->input("appearance_uuid"));*/
             $dragon->breeding_uuid  = Breeding::query()->where('name', 'principal')->first()->id;
             $dragon->appearance_uuid     = $request->input('appearance_uuid');
 
