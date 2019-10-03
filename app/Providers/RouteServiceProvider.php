@@ -72,6 +72,7 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::prefix('dragons')
             ->middleware('api')
+            ->middleware('auth:api')
             ->namespace($this->namespace)
             ->group(base_path('routes/dragons.php'));
 

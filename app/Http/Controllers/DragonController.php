@@ -7,7 +7,9 @@ use App\Http\Resources\DragonResource;
 use App\Models\Breeding;
 use App\Models\Dragon;
 use App\Models\Skill;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use PHPUnit\Framework\Constraint\Attribute;
 
@@ -20,7 +22,12 @@ class DragonController extends Controller
      */
     public function index()
     {
-        return DragonResource::collection(Dragon::all());
+        return DragonResource::collection(
+            Dragon::query()
+                ->join('breedings', 'dragons.breeding_uuid', '=', 'breedings.id')
+            ->join('users', 'breedings.user_uuid', "=", "users.id")
+            ->where('users.id', 'like', Auth::id())
+        );
     }
 
     /**

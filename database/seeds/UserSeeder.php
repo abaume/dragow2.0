@@ -23,8 +23,18 @@ class UserSeeder extends Seeder
                 'email'         => $faker->email,
                 'password'      => $faker->password,
                 'guild_uuid'    => $faker->randomElement($guilds),
-                'totem_uuid'    => $faker->randomElement($totem)
+                'totem_uuid'    => $faker->randomElement($totem),
+                'role'          => 'user'
             ]);
         }
+
+        User::create([
+            'name'          => $faker->unique()->name,
+            'email'         => $faker->email,
+            'password'      => $faker->password,
+            'guild_uuid'    => $faker->randomElement($guilds),
+            'totem_uuid'    => $faker->randomElement($totem),
+            'role'          => 'administrator'
+        ]);
     }
 }

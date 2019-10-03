@@ -21,6 +21,13 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
 
+            $table->string('api_token', 80)
+                ->unique()
+                ->nullable()
+                ->default(null);
+
+            $table->string('role');
+
             $table->uuid('guild_uuid')->nullable();
             $table->foreign('guild_uuid')->references('id')->on('guilds');
 
