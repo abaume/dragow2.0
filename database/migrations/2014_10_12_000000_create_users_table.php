@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
                 ->nullable()
                 ->default(null);
 
-            $table->string('role');
+            $table->string('role')->default('user');
 
             $table->uuid('guild_uuid')->nullable();
             $table->foreign('guild_uuid')->references('id')->on('guilds');
