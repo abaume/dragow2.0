@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/{race}', 'AppearanceController@indexByRace');
-Route::get('/', 'AppearanceController@index');
-Route::post('/', 'AppearanceController@store');
-Route::post('/image', 'AppearanceController@uploadColor');
+Route::get('/', 'AppearanceController@index')->middleware('isAdmin');
+Route::post('/', 'AppearanceController@store')->middleware('isAdmin');
+Route::post('/image', 'AppearanceController@uploadColor')->middleware('isAdmin');
