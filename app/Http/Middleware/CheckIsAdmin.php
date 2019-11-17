@@ -18,8 +18,8 @@ class CheckIsAdmin
     {
         if(Auth::check() && Auth::user()->role === 'admin') {
             return $next($request);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 403);
         }
+
+        return response()->json(['error' => 'Unauthorized'], 403);
     }
 }
